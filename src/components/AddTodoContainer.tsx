@@ -8,16 +8,12 @@ const AddTodoContainer = () => {
 
   const dispatch = useDispatch();
 
-  const handleAdd = () => {
-    if (todoValue !== "") {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (todoValue.trim() !== "") {
       dispatch(add_todo(todoValue));
       setTodoValue("");
     }
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    handleAdd();
   };
 
   return (
@@ -26,9 +22,7 @@ const AddTodoContainer = () => {
         <input className={css.outline} placeholder="input" value={todoValue} onChange={(e) => setTodoValue(e.target.value)} />
       </div>
       <div className="w-3/12">
-        <button className={css.outline} onClick={handleAdd}>
-          Add
-        </button>
+        <button className={css.outline}>Add</button>
       </div>
     </form>
   );
