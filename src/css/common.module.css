@@ -1,0 +1,8 @@
+.outline {
+  width: 100%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: gray;
+  border-radius: 0.4rem;
+  padding: 0.75rem;
+}
