@@ -1,26 +1,16 @@
-import css from "../../css/common.module.css";
-import DeleteButton from "../DeleteButton";
+import { useSelector } from "react-redux";
+import { TypeStore } from "../../store/store";
+import Todo from "../Todo";
 
 const TodoList = () => {
-  const todoList = [
-    "list1list1list1list1llist1list1list1list1llist1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1llist1list1list1list1llist1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1llist1list1list1list1llist1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1list1",
-    "list2",
-  ];
+  const todoList = useSelector((state: TypeStore) => state.todo);
+
   return (
     <div className="container p-4">
       <ul className="flex flex-col gap-2">
-        {todoList.map((todo) => {
-          return (
-            <li className={[css.outline, "flex"].join(" ")}>
-              <div className="w-9/12 break-words pr-4">
-                <p>{todo}</p>
-              </div>
-              <div className="w-3/12">
-                <DeleteButton />
-              </div>
-            </li>
-          );
-        })}
+        {todoList.map((todo) => (
+          <Todo key={todo.key} todo={todo} />
+        ))}
       </ul>
     </div>
   );
